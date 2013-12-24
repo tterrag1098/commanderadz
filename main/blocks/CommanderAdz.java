@@ -131,7 +131,7 @@ public class CommanderAdz {
           registerBlock(blockturquoiseFluid, "Turquoise Fluid", blockturquoiseFluid.getUnlocalizedName());
           registerBlock(blockyellowFluid, "Yellow Fluid", blockyellowFluid.getUnlocalizedName());
           
-          BucketHandler.INSTANCE.buckets.put(blockwhiteFluid, itemwhiteBucket);
+          BucketHandler.INSTANCE.buckets.put(blockwhitefluid, itemwhiteBucket);
           MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
 	}
 	
@@ -155,7 +155,7 @@ public class CommanderAdz {
 		
 		
 		
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("white fluid", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(itemwhiteBucket), new ItemStack(Item.bucketEmpty));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("white fluid", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(this.itemwhiteBucket), new ItemStack(Item.bucketEmpty));
 		
 		GameRegistry.registerTileEntity(HandScannerTile.class, "HandScannerTile");
 	}

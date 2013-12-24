@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Icon;
@@ -19,8 +20,10 @@ public class WhiteFluidBlock extends BlockFluidClassic{
     @SideOnly(Side.CLIENT)
     protected Icon flowingIcon;
     
+    
 	public WhiteFluidBlock(int id, Fluid fluid, Material material) {
 		super(id, fluid, material);
+		setCreativeTab(CreativeTabs.tabBlock);
 		// TODO Auto-generated constructor stub
 	}
 	 @Override
