@@ -2,6 +2,8 @@ package commanderadz.main;
 
 import java.util.List;
 
+import commanderadz.main.registry.Reference;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

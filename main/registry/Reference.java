@@ -1,4 +1,4 @@
-package commanderadz.main;
+package commanderadz.main.registry;
 
 public class Reference {
 	public static final String MOD_ID = "commanderadz";

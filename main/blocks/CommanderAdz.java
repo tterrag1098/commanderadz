@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import commanderadz.main.BlockCommanderAdz;
-import commanderadz.main.Reference;
+import commanderadz.main.PacketHandler;
 import commanderadz.main.fluid.BlockFluidLiquid;
-import commanderadz.main.fluid.WhiteFluidBlock;
+import commanderadz.main.items.ItemWhiteBucket;
+import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.HandScannerTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
@@ -32,10 +33,12 @@ import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"handscanner"}, packetHandler = PacketHandler.class)
 public class CommanderAdz {
 	@Instance(Reference.MOD_ID)
 	public static CommanderAdz instance;
@@ -45,7 +48,6 @@ public class CommanderAdz {
 	
 	int whiteBucketID;
 	
-	int whitefluidID;
 	int whiteFluidID;
 	int greenFluidID;
 	int purpleFluidID;
@@ -56,7 +58,6 @@ public class CommanderAdz {
 	public static Block blockcommanderAdz;
 	public static Block blockhandScanner;
 	
-	public static Block blockwhitefluid;
 	public static Block blockwhiteFluid;
 	public static Block blockgreenFluid;
 	public static Block blockpurpleFluid;
@@ -66,7 +67,6 @@ public class CommanderAdz {
 	
 	public static Item itemwhiteBucket;
 	
-	public static Fluid fluidwhite;
 	public static Fluid fluidWhite;
 	public static Fluid fluidGreen;
 	public static Fluid fluidPurple;
@@ -89,7 +89,6 @@ public class CommanderAdz {
           commanderAdzID = config.get("Block IDs", "CommanderAdz ID", 800).getInt();
           handScannerID = config.get("Block IDs", "Hand Scanner ID", 801).getInt();
           
-          whitefluidID = config.get("Fluid", "White Test", 899).getInt();
           whiteFluidID = config.get("Fluid IDs", "White Fluid ID", 900).getInt();
           greenFluidID = config.get("Fluid IDs", "Green Fluid ID", 901).getInt();
           purpleFluidID = config.get("Fluid IDs", "Purple Fluid ID", 902).getInt();
@@ -99,15 +98,13 @@ public class CommanderAdz {
           
           whiteBucketID = config.get("Bucket IDs", "White Fluid Bucket ID", 1000).getInt();
           
-          fluidwhite = new Fluid("white fluid").setBlockID(whitefluidID).setGaseous(true);
-          fluidWhite = new Fluid("White").setBlockID(whiteFluidID);
+          fluidWhite = new Fluid("white").setBlockID(whiteFluidID);
           fluidGreen = new Fluid("Green").setBlockID(greenFluidID);
           fluidPurple = new Fluid("Purple").setBlockID(purpleFluidID);
           fluidRed = new Fluid("Red").setBlockID(redFluidID);
           fluidTurquoise = new Fluid("Turquoise").setBlockID(turquoiseFluidID);
           fluidYellow = new Fluid("Yellow").setBlockID(yellowFluidID);
           
-          FluidRegistry.registerFluid(fluidwhite);
           FluidRegistry.registerFluid(fluidWhite);
           FluidRegistry.registerFluid(fluidGreen);
           FluidRegistry.registerFluid(fluidPurple);
@@ -115,7 +112,6 @@ public class CommanderAdz {
           FluidRegistry.registerFluid(fluidTurquoise);
           FluidRegistry.registerFluid(fluidYellow);
           
-          blockwhitefluid = new WhiteFluidBlock(whitefluidID, fluidwhite, Material.water).setUnlocalizedName("fluidwhitenew").setTextureName("");
           blockwhiteFluid = new BlockFluidLiquid(whiteFluidID, fluidWhite).setUnlocalizedName("fluidwhite").setTextureName("commanderadz:fluidwhite");
           blockgreenFluid = new BlockFluidLiquid(greenFluidID, fluidGreen).setUnlocalizedName("fluidgreen").setTextureName("commanderadz:fluidgreen");
           blockpurpleFluid = new BlockFluidLiquid(purpleFluidID, fluidPurple).setUnlocalizedName("fluidpurple").setTextureName("commanderadz:fluidpurple");
@@ -123,7 +119,6 @@ public class CommanderAdz {
           blockturquoiseFluid = new BlockFluidLiquid(turquoiseFluidID, fluidTurquoise).setUnlocalizedName("fluidturquoise").setTextureName("commanderadz:fluidturquoise");
           blockyellowFluid = new BlockFluidLiquid(yellowFluidID, fluidYellow).setUnlocalizedName("fluidyellow").setTextureName("commanderadz:fluidyellow");
           
-          registerBlock(blockwhitefluid, "White Fluid New", blockwhitefluid.getUnlocalizedName());
           registerBlock(blockwhiteFluid, "White Fluid", blockwhiteFluid.getUnlocalizedName());
           registerBlock(blockgreenFluid, "Green Fluid", blockgreenFluid.getUnlocalizedName());
           registerBlock(blockpurpleFluid, "Purple Fluid", blockpurpleFluid.getUnlocalizedName());
@@ -131,14 +126,14 @@ public class CommanderAdz {
           registerBlock(blockturquoiseFluid, "Turquoise Fluid", blockturquoiseFluid.getUnlocalizedName());
           registerBlock(blockyellowFluid, "Yellow Fluid", blockyellowFluid.getUnlocalizedName());
           
-          BucketHandler.INSTANCE.buckets.put(blockwhitefluid, itemwhiteBucket);
+          BucketHandler.INSTANCE.buckets.put(blockwhiteFluid, itemwhiteBucket);
           MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
 	}
 	
 	@ForgeSubscribe
 	public void postStitch(TextureStitchEvent.Post event)
 	{
-	    fluidwhite.setIcons(blockwhitefluid.getBlockTextureFromSide(0), blockwhitefluid.getBlockTextureFromSide(1));
+	    fluidWhite.setIcons(blockwhiteFluid.getBlockTextureFromSide(0), blockwhiteFluid.getBlockTextureFromSide(1));
 	}
 	
 	@EventHandler
@@ -149,13 +144,13 @@ public class CommanderAdz {
 		registerBlock(blockcommanderAdz,"Commander Adz Block", blockcommanderAdz.getUnlocalizedName());
 		blockhandScanner = new BlockHandScanner(handScannerID);
 		registerBlock(blockhandScanner, "Hand Scanner", blockhandScanner.getUnlocalizedName());
-		itemwhiteBucket = new ItemWhiteBucket(whiteBucketID);
+		itemwhiteBucket = new ItemWhiteBucket(whiteBucketID, whiteFluidID);
 		registerItem(itemwhiteBucket, "White Bucket", itemwhiteBucket.getUnlocalizedName());
 		
 		
 		
 		
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("white fluid", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(this.itemwhiteBucket), new ItemStack(Item.bucketEmpty));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("white", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(this.itemwhiteBucket), new ItemStack(Item.bucketEmpty));
 		
 		GameRegistry.registerTileEntity(HandScannerTile.class, "HandScannerTile");
 	}

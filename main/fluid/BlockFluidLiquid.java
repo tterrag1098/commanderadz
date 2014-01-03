@@ -1,7 +1,6 @@
 package commanderadz.main.fluid;
 
-import commanderadz.main.Reference;
-
+import commanderadz.main.registry.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;

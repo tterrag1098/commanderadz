@@ -6,7 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.lwjgl.opengl.KHRDebugCallback.Handler;
 
-import commanderadz.main.Reference;
+import commanderadz.main.PacketHandler;
+import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.HandScannerTile;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -75,7 +76,7 @@ public Icon getIcon(int side, int metadata){
           EntityPlayer player = (EntityPlayer) entity;
           if(!world.isRemote)player.addChatMessage("Hand print set");
         if (entity instanceof EntityPlayer) {
-                String name = player.username;
+                name = player.username;
                 HandScannerTile tileEntity = (HandScannerTile) world.getBlockTileEntity(x, y, z);
                 tileEntity.oName = name;
         }
@@ -85,12 +86,19 @@ public Icon getIcon(int side, int metadata){
     {
     	HandScannerTile tileEntity = (HandScannerTile) par1World.getBlockTileEntity(x, y, z);
     	par1World.notifyBlocksOfNeighborChange(x, y, z, this.blockID);
-    	tileEntity.oName = this.nbtname;
+    	if(par1World.isRemote)tileEntity.packet();
+    	
+    	nbtname = tileEntity.oName;
     	name = player.username;
+    		if(par1World.isRemote)System.out.println("client" + name);
+    		if(par1World.isRemote)System.out.println("client" + tileEntity.oName);
+    		if(par1World.isRemote)System.out.println("client" + nbtname);
+    		if(!par1World.isRemote)System.out.println("server" + name);
+    		if(!par1World.isRemote)System.out.println("server" + tileEntity.oName);
+    		if(!par1World.isRemote)System.out.println("server" + nbtname);
+    		System.out.println(tileEntity.readName);
     	if(!par1World.isRemote){
-    		System.out.println(this.nbtname);
-    		System.out.println(this.name);
-    	if(this.nbtname == this.name){
+    	if(nbtname == name){
     		if(status == 0){
     			power = 15;
     			status = 1;
@@ -100,7 +108,7 @@ public Icon getIcon(int side, int metadata){
                 par1World.notifyBlocksOfNeighborChange(x, y, z + 1, this.blockID);
                 par1World.notifyBlocksOfNeighborChange(x, y + 1, z, this.blockID);
                 par1World.notifyBlocksOfNeighborChange(x, y - 1, z, this.blockID);
-    		}else{
+    		}else if(status == 1){
     			power = 0;
     			status = 0;
     			par1World.notifyBlocksOfNeighborChange(x - 1, y, z, this.blockID);
@@ -111,13 +119,15 @@ public Icon getIcon(int side, int metadata){
                 par1World.notifyBlocksOfNeighborChange(x, y - 1, z, this.blockID);
     		}
     		return true;
-    	}else if(!par1World.isRemote) player.addChatMessage("Hand print not recognised");
-    		return true;
+    	}else if(!par1World.isRemote){
+    		player.addChatMessage("Hand print not recognised");
+    	}
     	}else{
     		return true;
     	}
+    		return true;
+    	
     }
-    
     
     @Override
     public TileEntity createNewTileEntity(World world){
