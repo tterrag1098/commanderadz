@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.lwjgl.opengl.KHRDebugCallback.Handler;
-
 import commanderadz.main.PacketHandler;
 import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.HandScannerTile;

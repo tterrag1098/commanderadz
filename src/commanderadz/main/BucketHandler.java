@@ -1,4 +1,4 @@
-package commanderadz.main.blocks;
+package commanderadz.main;
 
 import java.util.HashMap;
 import java.util.Map;

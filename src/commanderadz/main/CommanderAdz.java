@@ -1,10 +1,10 @@
-package commanderadz.main.blocks;
+package commanderadz.main;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-import commanderadz.main.BlockCommanderAdz;
-import commanderadz.main.PacketHandler;
+import commanderadz.main.blocks.BlockCommanderAdz;
+import commanderadz.main.blocks.BlockHandScanner;
 import commanderadz.main.fluid.BlockFluidLiquid;
 import commanderadz.main.items.ItemWhiteBucket;
 import commanderadz.main.registry.Reference;

@@ -1,4 +1,4 @@
-package commanderadz.main;
+package commanderadz.main.blocks;
 
 import java.util.List;
 
