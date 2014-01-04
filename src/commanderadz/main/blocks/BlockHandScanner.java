@@ -34,7 +34,7 @@ public class BlockHandScanner extends BlockContainer{
         }
 
         @SideOnly(Side.CLIENT)
-        private Icon side, bottom, top, front;
+        private Icon side, bottom, top, front, frontoff;
 
         @SideOnly(Side.CLIENT)
         public void registerIcons(IconRegister reg){
@@ -42,6 +42,7 @@ public class BlockHandScanner extends BlockContainer{
                 this.bottom = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "side");
                 this.top = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "side");
                 this.front = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "front");
+                this.frontoff = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "frontoff");
         }
 
         @SideOnly(Side.CLIENT)
