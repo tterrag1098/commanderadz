@@ -1,32 +1,23 @@
 package commanderadz.main.blocks;
 
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
-import org.lwjgl.opengl.KHRDebugCallback.Handler;
-
-import commanderadz.main.PacketHandler;
-import commanderadz.main.registry.Reference;
-import commanderadz.main.tileentity.HandScannerTile;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import commanderadz.main.registry.Reference;
+import commanderadz.main.tileentity.HandScannerTile;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockHandScanner extends BlockContainer{
 
@@ -85,13 +76,11 @@ public class BlockHandScanner extends BlockContainer{
 	{
 		HandScannerTile tileEntity = (HandScannerTile) par1World.getBlockTileEntity(x, y, z);
 		par1World.notifyBlocksOfNeighborChange(x, y, z, this.blockID);
-		//if(par1World.isRemote)tileEntity.packet();
 
 		nbtname = tileEntity.oName;
 		name = player.username;
 		if(!par1World.isRemote){
 			if(nbtname.equals(name)){
-				System.out.println("test");
 				if(status == 0){
 					power = 15;
 					status = 1;

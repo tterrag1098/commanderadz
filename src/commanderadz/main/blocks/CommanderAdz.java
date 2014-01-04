@@ -3,16 +3,7 @@ package commanderadz.main.blocks;
 import java.io.IOException;
 import java.util.Arrays;
 
-import commanderadz.main.BlockCommanderAdz;
-import commanderadz.main.PacketHandler;
-import commanderadz.main.fluid.BlockFluidLiquid;
-import commanderadz.main.items.ItemWhiteBucket;
-import commanderadz.main.registry.Reference;
-import commanderadz.main.tileentity.HandScannerTile;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialLiquid;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -22,14 +13,17 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.liquids.LiquidContainerData;
-import net.minecraftforge.liquids.LiquidContainerRegistry;
-import net.minecraftforge.liquids.LiquidDictionary;
+
+import commanderadz.main.BlockCommanderAdz;
+import commanderadz.main.PacketHandler;
+import commanderadz.main.fluid.BlockFluidLiquid;
+import commanderadz.main.items.ItemWhiteBucket;
+import commanderadz.main.registry.Reference;
+import commanderadz.main.tileentity.HandScannerTile;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -150,7 +144,7 @@ public class CommanderAdz {
 		
 		
 		
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("white", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(this.itemwhiteBucket), new ItemStack(Item.bucketEmpty));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("white", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(CommanderAdz.itemwhiteBucket), new ItemStack(Item.bucketEmpty));
 		
 		GameRegistry.registerTileEntity(HandScannerTile.class, "HandScannerTile");
 	}

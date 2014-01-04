@@ -1,12 +1,13 @@
 package commanderadz.main.items;
 
-import commanderadz.main.registry.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
+
+import commanderadz.main.registry.Reference;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemWhiteBucket extends ItemBucket {
     public ItemWhiteBucket(int id, int lid){
