@@ -80,8 +80,6 @@ public class BlockHandScanner extends BlockContainer{
 
                 nbtname = tileEntity.oName;
                 name = player.username;
-                player.addChatMessage(name);
-                player.addChatMessage(nbtname);
                 if(!par1World.isRemote){
                         if(nbtname == name){
                                 if(status == 0){
