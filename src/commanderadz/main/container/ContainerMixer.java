@@ -21,7 +21,6 @@ public class ContainerMixer extends Container {
             
             
              addSlotToContainer(new Slot(tile_entity, o, 56+p*60, 35+q*18));
-             addSlotToContainer(new Slot(tile_entity, o, 56+p*60, 35+q*56));
              o++;
              
              }

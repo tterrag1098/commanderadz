@@ -1,4 +1,4 @@
-package commanderadz.main;
+package commanderadz.main.handler;
 
 import commanderadz.main.container.ContainerMixer;
 import commanderadz.main.gui.GuiMixer;

@@ -1,4 +1,4 @@
-package commanderadz.main;
+package commanderadz.main.handler;
 
 import java.util.HashMap;
 import java.util.Map;
