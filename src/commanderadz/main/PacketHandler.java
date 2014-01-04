@@ -22,6 +22,7 @@ public class PacketHandler implements IPacketHandler{
 
 	private void handScanner(Packet250CustomPayload packet, EntityPlayer player) {
 		DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
+		@SuppressWarnings("unused")
 		World world = player.worldObj;
 		String name;
 		int xx;
