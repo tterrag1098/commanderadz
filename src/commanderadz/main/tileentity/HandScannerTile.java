@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class HandScannerTile extends TileEntity {
 	
-	public  String oName;
+	public String oName;
 	public String readName;
 
 	@Override
@@ -32,8 +32,13 @@ public class HandScannerTile extends TileEntity {
 		System.out.println("Read NBT");
 		System.out.println(oName);
 	}
+
+	public void setName(String name)
+	{
+		this.oName = name;
+	}
 	
-	public Packet packet(){
+	/*public Packet packet(){
 		if(oName != null){
 		ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
 		DataOutputStream outputStream = new DataOutputStream(bos);
@@ -54,7 +59,7 @@ public class HandScannerTile extends TileEntity {
 	}
 		return null;
 		
-	}
+	}*/
     
 
 

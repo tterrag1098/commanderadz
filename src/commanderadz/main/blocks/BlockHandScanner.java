@@ -35,8 +35,6 @@ public class BlockHandScanner extends BlockContainer{
 	public int status;
 	private String nbtname;
 
-
-
 	public BlockHandScanner(int id){
 		super(id, Material.rock);
 		setUnlocalizedName("handscanner");
@@ -65,20 +63,21 @@ public class BlockHandScanner extends BlockContainer{
 		else if (metadata == 0 && side == 3) return this.front;
 		else if (metadata == 1 && side == 4) return this.front;
 		else return this.side;
-
-
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack par6ItemStack) {
+		
 		int whichDirectionFacing = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+		
 		world.setBlockMetadataWithNotify(x, y, z, whichDirectionFacing, 2);
+		
 		EntityPlayer player = (EntityPlayer) entity;
+		
 		if(!world.isRemote)player.addChatMessage("Hand print set");
+		
 		if (entity instanceof EntityPlayer) {
 			name = player.username;
-			HandScannerTile tileEntity = (HandScannerTile) world.getBlockTileEntity(x, y, z);
-			tileEntity.oName = name;
 		}
 	}
 
@@ -86,19 +85,13 @@ public class BlockHandScanner extends BlockContainer{
 	{
 		HandScannerTile tileEntity = (HandScannerTile) par1World.getBlockTileEntity(x, y, z);
 		par1World.notifyBlocksOfNeighborChange(x, y, z, this.blockID);
-		if(par1World.isRemote)tileEntity.packet();
+		//if(par1World.isRemote)tileEntity.packet();
 
 		nbtname = tileEntity.oName;
 		name = player.username;
-		if(par1World.isRemote)System.out.println("client" + name);
-		if(par1World.isRemote)System.out.println("client" + tileEntity.oName);
-		if(par1World.isRemote)System.out.println("client" + nbtname);
-		if(!par1World.isRemote)System.out.println("server" + name);
-		if(!par1World.isRemote)System.out.println("server" + tileEntity.oName);
-		if(!par1World.isRemote)System.out.println("server" + nbtname);
-		System.out.println(tileEntity.readName);
 		if(!par1World.isRemote){
 			if(nbtname.equals(name)){
+				System.out.println("test");
 				if(status == 0){
 					power = 15;
 					status = 1;
@@ -111,11 +104,8 @@ public class BlockHandScanner extends BlockContainer{
 				return true;
 			}
 		}
-		else if(par1World.isRemote){
+		else if(par1World.isRemote && !nbtname.equals(name)){
 			player.addChatMessage("Hand print not recognised");
-		}
-		else{
-			return true;
 		}
 		return true;
 
@@ -123,7 +113,9 @@ public class BlockHandScanner extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world){
-		return new HandScannerTile();
+		HandScannerTile tile = new HandScannerTile();
+		tile.setName(this.name);
+		return tile;
 	}
 
 	public boolean canProvidePower()
