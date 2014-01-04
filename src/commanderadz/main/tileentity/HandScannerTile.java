@@ -6,7 +6,6 @@ import net.minecraft.tileentity.TileEntity;
 public class HandScannerTile extends TileEntity {
 	
 	public String oName;
-	public String readName;
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt){

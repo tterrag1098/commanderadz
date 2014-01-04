@@ -35,7 +35,7 @@ public class PacketHandler implements IPacketHandler{
 			zz = inputStream.readInt();
 			name = inputStream.readUTF();
 			tile = (HandScannerTile) player.worldObj.getBlockTileEntity(xx, yy, zz);
-			tile.readName = name;
+			tile.oName = name;
 		} catch (IOException e){
 			e.printStackTrace();
 			return;

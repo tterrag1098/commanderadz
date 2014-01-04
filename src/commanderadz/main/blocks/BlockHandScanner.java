@@ -80,6 +80,8 @@ public class BlockHandScanner extends BlockContainer{
 
                 nbtname = tileEntity.oName;
                 name = player.username;
+                player.addChatMessage(name);
+                player.addChatMessage(nbtname);
                 if(!par1World.isRemote){
                         if(nbtname == name){
                                 if(status == 0){
@@ -96,10 +98,6 @@ public class BlockHandScanner extends BlockContainer{
                 }
                 else if(!par1World.isRemote && (nbtname != name)){
                         player.addChatMessage("Hand print not recognised");
-                }else{
-                	player.addChatMessage(name.toString());
-                	player.addChatMessage(tileEntity.oName);
-                	
                 }
                 return true;
 
