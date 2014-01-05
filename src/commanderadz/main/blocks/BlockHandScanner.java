@@ -86,6 +86,9 @@ public class BlockHandScanner extends BlockContainer{
 
                 nbtname = tileEntity.oName;
                 name = player.username;
+                //This is never called when the world is restarted
+                // l
+                // V
                 if(!par1World.isRemote){
                         if(nbtname == name){
                                 if(status == 0){
