@@ -17,15 +17,18 @@ public class ContainerMixer extends Container {
                 int o = 0;
                 int o1 = 2;
                 int q=0;
+                int z = 0;
+                
                  for(int p = 0; p <2; p++){
              
             
             
              addSlotToContainer(new Slot(tile_entity, o, 56+p*60, 35+q*18));
-             addSlotToContainer(new Slot(tile_entity, o1, 56+p*60, 56+q*18));
              o++;
-             
              }
+               
+             addSlotToContainer(new Slot(tile_entity, o1, 56+z*60, 56+q*18));
+             o++;
                 
                  bindPlayerInventory(player_inventory);
         }

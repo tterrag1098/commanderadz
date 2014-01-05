@@ -177,7 +177,7 @@ public class TileMixer extends TileEntity implements IInventory{
                 // TODO Auto-generated method stub
                   if (inventory[0] == null)
           {
-                                    abc = 0;
+                  abc = 0;
                   return false;
                   
           }
@@ -211,7 +211,7 @@ public class TileMixer extends TileEntity implements IInventory{
         }
           public void updateEntity()
       {
-                if (abc ==100){
+                if (abc == 100){
                         
                         if (canPress()){
                                 pressItem();

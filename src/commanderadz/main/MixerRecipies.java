@@ -32,6 +32,6 @@ public class MixerRecipies {
         
         private MixerRecipies()
         {
-        addSmelting(Item.bucketWater.itemID, new ItemStack(Item.bucketEmpty, 1, 0), 0.7F);
+        addSmelting(Item.appleRed.itemID, new ItemStack(Item.bucketEmpty.itemID, 1, 0), 0.7F);
         }
 }

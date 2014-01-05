@@ -31,7 +31,7 @@ public class GuiMixer extends GuiContainer{
           protected void drawGuiContainerForegroundLayer(int par1, int par2)
       {
                fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 4210752);
-               this.fontRenderer.drawString("Coin Press", 66, 6, 4210752);
+               this.fontRenderer.drawString("Liquid Mixer (WIP)", 66, 6, 4210752);
       }
 
       /**
