@@ -15,7 +15,7 @@ public class ContainerMixer extends Container {
         public ContainerMixer(TileMixer tile_entity, InventoryPlayer player_inventory){
                 this.tile_entity = tile_entity;
                 int o = 0;
-                int o1 = 1;
+                int o1 = 2;
                 int q=0;
                  for(int p = 0; p <2; p++){
              
@@ -50,7 +50,7 @@ public class ContainerMixer extends Container {
         }
            public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
                 
-       ItemStack stack = null;
+        ItemStack stack = null;
        Slot slot_object = (Slot) inventorySlots.get(slot);
       
        if(slot_object != null && slot_object.getHasStack()){

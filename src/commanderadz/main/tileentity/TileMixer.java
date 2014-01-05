@@ -15,7 +15,7 @@ public class TileMixer extends TileEntity implements IInventory{
         public int pressTime = 0;
         public int abc = 1;
         public TileMixer(){
-                 this.inventory = new ItemStack[2];
+                 this.inventory = new ItemStack[3];
         }
         @Override
         public int getSizeInventory() {
