@@ -22,8 +22,4 @@ public class HandScannerTile extends TileEntity {
 		System.out.println(oName);
 	}
 
-	public void setName(String name)
-	{
-		this.oName = name;
-	}
 }

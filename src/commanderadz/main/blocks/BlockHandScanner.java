@@ -64,9 +64,15 @@ public class BlockHandScanner extends BlockContainer{
                 
                 world.setBlockMetadataWithNotify(x, y, z, whichDirectionFacing, 2);
                 
+                HandScannerTile tileEntity = (HandScannerTile) world.getBlockTileEntity(x, y, z);
+                
+                tileEntity.oName = name;
+                
                 EntityPlayer player = (EntityPlayer) entity;
                 
                 if(!world.isRemote)player.addChatMessage("Hand print set");
+                
+                
                 
                 if (entity instanceof EntityPlayer) {
                         name = player.username;
@@ -96,6 +102,7 @@ public class BlockHandScanner extends BlockContainer{
                 }
                 else if(!par1World.isRemote && (nbtname != name)){
                         player.addChatMessage("Hand print not recognised");
+                }else if(nbtname != name){
                 }
                 return true;
 
@@ -104,7 +111,6 @@ public class BlockHandScanner extends BlockContainer{
         @Override
         public TileEntity createNewTileEntity(World world){
                 HandScannerTile tile = new HandScannerTile();
-                tile.setName(this.name);
                 return tile;
         }
 
