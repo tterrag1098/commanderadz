@@ -181,7 +181,7 @@ public class TileMixer extends TileEntity implements IInventory{
                   return false;
                   
           }
-
+                  
           ItemStack itemstack = MixerRecipies.press().getPressResult(inventory[0].getItem().itemID);
 
           if (itemstack == null)
