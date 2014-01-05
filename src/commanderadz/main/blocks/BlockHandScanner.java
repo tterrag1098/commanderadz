@@ -105,7 +105,6 @@ public class BlockHandScanner extends BlockContainer{
                 }
                 else if(!par1World.isRemote && (!nbtname.equals(name))){
                         player.addChatMessage("Hand print not recognised");
-                }else if(!nbtname.equals(name)){
                 }
                 return true;
 
