@@ -1,4 +1,4 @@
-package commanderadz.main;
+package commanderadz.main.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
