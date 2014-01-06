@@ -6,13 +6,12 @@ import java.util.Arrays;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+
 import commanderadz.main.blocks.BlockCommanderAdz;
 import commanderadz.main.blocks.BlockHandScanner;
 import commanderadz.main.blocks.BlockMixer;
@@ -29,6 +28,7 @@ import commanderadz.main.items.ItemYellowBucket;
 import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.HandScannerTile;
 import commanderadz.main.tileentity.TileMixer;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

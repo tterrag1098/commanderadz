@@ -1,13 +1,12 @@
 package commanderadz.main.container;
 
-import commanderadz.main.tileentity.TileMixer;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import commanderadz.main.tileentity.TileMixer;
 
 public class ContainerMixer extends Container {
         protected TileMixer tile_entity;

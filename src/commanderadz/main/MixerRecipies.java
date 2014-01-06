@@ -7,8 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class MixerRecipies {
-        private Map mixerList = new HashMap();
-        private Map mixerExperience = new HashMap();
+        private Map<Integer, ItemStack> mixerList = new HashMap<Integer, ItemStack>();
+        private Map<Integer, Float> mixerExperience = new HashMap<Integer, Float>();
         private static final MixerRecipies mixerBase = new MixerRecipies();
         
         public static final MixerRecipies press()
