@@ -70,7 +70,6 @@ public class ContainerMixer extends Container
 		if (slotObj != null && slotObj.getHasStack())
 		{
 			itemstack1 = slotObj.getStack();
-			System.out.println(slot);
 			if (slot < 3)
 			{
 				if (!this.mergeItemStack(itemstack1, 30, 39, false))
@@ -79,7 +78,6 @@ public class ContainerMixer extends Container
 						return null;
 				}
 				slotObj.onSlotChange(itemstack1, itemstack1);
-				System.out.println("1");
 			}
 			else if (slot > 2)
 			{
@@ -97,13 +95,11 @@ public class ContainerMixer extends Container
 							return null;
 					slotObj.onSlotChange(itemstack1, itemstack1);
 				}
-				System.out.println("2");
 			}
 
 			if (itemstack1.stackSize == 0)
 			{
 				slotObj.putStack((ItemStack) null);
-				System.out.println("3");
 			}
 			else
 			{

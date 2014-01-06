@@ -10,6 +10,8 @@ import org.lwjgl.opengl.GL11;
 import commanderadz.main.container.ContainerMixer;
 import commanderadz.main.registry.DefaultProps;
 import commanderadz.main.tileentity.TileMixer;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiMixer extends GuiContainer
 {
@@ -41,6 +43,7 @@ public class GuiMixer extends GuiContainer
 	 * Draw the background layer for the GuiContainer (everything behind the
 	 * items)
 	 */
+	@SideOnly(Side.CLIENT)
 	@SuppressWarnings("unused")
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{

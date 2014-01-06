@@ -175,16 +175,22 @@ public class TileMixer extends TileEntity implements IInventory
 			{
 				this.inventory[2] = var1.copy();
 			}
-			else if (this.inventory[1].itemID == var1.itemID)
+			else if (this.inventory[2].itemID == var1.itemID)
 			{
 				System.out.println("2");
 				++this.inventory[2].stackSize;
 			}
-			--this.inventory[0].stackSize;
+			this.inventory[0].stackSize--;
+			this.inventory[1].stackSize--;
 			if (this.inventory[0].stackSize == 0)
 			{
 				Item var2 = this.inventory[0].getItem().getContainerItem();
 				this.inventory[0] = var2 == null ? null : new ItemStack(var2);
+			}
+			if (this.inventory[1].stackSize == 0)
+			{
+				Item var2 = this.inventory[1].getItem().getContainerItem();
+				this.inventory[1] = var2 == null ? null : new ItemStack(var2);
 			}
 		}
 
@@ -201,8 +207,7 @@ public class TileMixer extends TileEntity implements IInventory
 		ItemStack itemstack = MixerRecipies.instance().getRecipeResult(inventory[0].getItem().itemID, inventory[1].getItem().itemID);
 
 		if (itemstack == null)
-		{			System.out.println("false");
-
+		{
 			return false;
 		}
 
@@ -229,16 +234,19 @@ public class TileMixer extends TileEntity implements IInventory
 
 	public void updateEntity()
 	{
-		if (abc == 100)
+		if (canPress() && abc == 0)
+			abc = 1;
+		
+		if (abc >= 100)
 		{
 			if (canPress())
 			{
 				pressItem();
-				System.out.println("Its 100");
+				System.out.println("Its 100: " + abc);
 			}
 			abc = 0;
 		}
-		else
+		else if (abc > 0)
 		{
 			abc++;
 		}
