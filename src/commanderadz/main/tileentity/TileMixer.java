@@ -168,73 +168,73 @@ public class TileMixer extends TileEntity implements IInventory
 
 	public void pressItem()
 	{
-
-		ItemStack var1 = MixerRecipies.press().getPressResult(this.inventory[0].getItem().itemID);
-		if (this.inventory[2] == null)
+		if (this.inventory[0] != null && this.inventory[1] != null)
 		{
-			this.inventory[2] = var1.copy();
-		}
-		else if (this.inventory[1].itemID == var1.itemID)
-		{
-			System.out.println("2");
-			++this.inventory[2].stackSize;
-		}
-		--this.inventory[0].stackSize;
-		if (this.inventory[0].stackSize == 0)
-		{
-			Item var2 = this.inventory[0].getItem().getContainerItem();
-			this.inventory[0] = var2 == null ? null : new ItemStack(var2);
+			ItemStack var1 = MixerRecipies.instance().getRecipeResult(this.inventory[0].getItem().itemID, this.inventory[1].getItem().itemID);
+			if (this.inventory[2] == null)
+			{
+				this.inventory[2] = var1.copy();
+			}
+			else if (this.inventory[1].itemID == var1.itemID)
+			{
+				System.out.println("2");
+				++this.inventory[2].stackSize;
+			}
+			--this.inventory[0].stackSize;
+			if (this.inventory[0].stackSize == 0)
+			{
+				Item var2 = this.inventory[0].getItem().getContainerItem();
+				this.inventory[0] = var2 == null ? null : new ItemStack(var2);
+			}
 		}
 
 	}
 
 	public boolean canPress()
 	{
-		if (inventory[0] == null)
+		if (inventory[0] == null || inventory[1] == null)
 		{
 			abc = 0;
 			return false;
-
 		}
 
-		ItemStack itemstack = MixerRecipies.press().getPressResult(inventory[0].getItem().itemID);
+		ItemStack itemstack = MixerRecipies.instance().getRecipeResult(inventory[0].getItem().itemID, inventory[1].getItem().itemID);
 
 		if (itemstack == null)
-		{
+		{			System.out.println("false");
+
 			return false;
 		}
 
-		if (inventory[1] == null)
+		if (inventory[2] == null)
 		{
 
 			return true;
 		}
 
-		if (!inventory[1].isItemEqual(itemstack))
+		if (!inventory[2].isItemEqual(itemstack))
 		{
 
 			return false;
 		}
 
-		if (inventory[1].stackSize < getInventoryStackLimit() && inventory[1].stackSize < inventory[1].getMaxStackSize())
+		if (inventory[2].stackSize < getInventoryStackLimit() && inventory[1].stackSize < inventory[1].getMaxStackSize())
 		{
 
 			return true;
 		}
 
-		return inventory[1].stackSize < itemstack.getMaxStackSize();
+		return inventory[2].stackSize < itemstack.getMaxStackSize();
 	}
 
 	public void updateEntity()
 	{
 		if (abc == 100)
 		{
-
 			if (canPress())
 			{
 				pressItem();
 				System.out.println("Its 100");
-
 			}
 			abc = 0;
 		}
