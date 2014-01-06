@@ -85,14 +85,14 @@ public class ContainerMixer extends Container
 			{
 				if (slot < 30)
 				{
-					if (!this.mergeItemStack(itemstack1, 0, 1, false))
+					if (!this.mergeItemStack(itemstack1, 0, 2, false))
 						if (!this.mergeItemStack(itemstack1, 30, 39, false))
 							return null;
 					slotObj.onSlotChange(itemstack1, itemstack1);
 				}
 				else if (slot > 29)
 				{
-					if (!this.mergeItemStack(itemstack1, 0, 1, false))
+					if (!this.mergeItemStack(itemstack1, 0, 2, false))
 						if (!this.mergeItemStack(itemstack1, 3, 29, false))
 							return null;
 					slotObj.onSlotChange(itemstack1, itemstack1);
