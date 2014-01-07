@@ -36,7 +36,7 @@ public class GuiMixer extends GuiContainer
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 4210752);
-		this.fontRenderer.drawString("Liquid Mixer (WIP)", 66, 6, 4210752);
+		this.fontRenderer.drawString("Liquid Mixer", 66, 6, 4210752);
 	}
 
 	/**
@@ -59,10 +59,10 @@ public class GuiMixer extends GuiContainer
 		if (this.mixerTile.canPress())
 		{
 			System.out.println(this.mixerTile.abc);
-			x = (this.width - this.xSize) / 2 + 80;
-			y = (this.height - this.ySize) / 2 + 35;
-			progress = (int) (0.26 * this.mixerTile.abc);
-			this.drawTexturedModalRect(this.x, this.y, 176, 14, this.progress, 16);
+			x = (this.width - this.xSize) / 2 + 61;
+			y = (this.height - this.ySize) / 2 + 19;
+			progress = (int) (0.59 * this.mixerTile.abc);
+			this.drawTexturedModalRect(this.x, this.y, 177, 2, this.progress, 46);
 		}
 	}
 
