@@ -1,5 +1,6 @@
 package commanderadz.main;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,23 +9,35 @@ import net.minecraft.item.ItemStack;
 
 public class MixerRecipies
 {
-	private Map<Integer, ItemStack> mixerList = new HashMap<Integer, ItemStack>();
+	private Map<ArrayList<Integer>, ItemStack> mixerList = new HashMap<ArrayList<Integer>, ItemStack>();
 	private Map<Integer, Float> mixerExperience = new HashMap<Integer, Float>();
 	private static final MixerRecipies mixerBase = new MixerRecipies();
 
-	public static final MixerRecipies press()
+	public static final MixerRecipies instance()
 	{
 		return mixerBase;
 	}
 
-	public ItemStack getPressResult(int id)
+	public ItemStack getRecipeResult(int id1, int id2)
 	{
-		return (ItemStack) mixerList.get(Integer.valueOf(id));
+		ArrayList<Integer> array1 = new ArrayList<Integer>(), array2 = new ArrayList<Integer>();
+		
+		array1.add(id1);
+		array1.add(id2);
+		
+		array2.add(id2);
+		array2.add(id1);
+		
+		return mixerList.get(array1) == null ? mixerList.get(array2) : mixerList.get(array1);
 	}
 
-	public void addSmelting(int id, ItemStack itemStack, float experience)
+	public void addMixerRecipe(int id1, int id2, ItemStack itemStack, float experience)
 	{
-		mixerList.put(Integer.valueOf(id), itemStack);
+		ArrayList<Integer> array = new ArrayList<Integer>();
+		array.add(id1);
+		array.add(id2);
+		
+		mixerList.put(array, itemStack);
 		this.mixerExperience.put(Integer.valueOf(itemStack.itemID), Float.valueOf(experience));
 	}
 
@@ -35,6 +48,6 @@ public class MixerRecipies
 
 	private MixerRecipies()
 	{
-		addSmelting(Item.appleRed.itemID, new ItemStack(Item.bucketEmpty.itemID, 1, 0), 0.7F);
+		addMixerRecipe(Item.ingotGold.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemyellowBucket, 1, 0), 0.7F);
 	}
 }
