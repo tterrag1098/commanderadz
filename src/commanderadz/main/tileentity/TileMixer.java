@@ -180,6 +180,8 @@ public class TileMixer extends TileEntity implements IInventory
 				System.out.println("2");
 				++this.inventory[2].stackSize;
 			}
+			this.inventory[0].getItem().setContainerItem(null);
+			this.inventory[1].getItem().setContainerItem(null);
 			this.inventory[0].stackSize--;
 			this.inventory[1].stackSize--;
 			if (this.inventory[0].stackSize == 0)
@@ -234,11 +236,6 @@ public class TileMixer extends TileEntity implements IInventory
 
 	public void updateEntity()
 	{
-		if (this.inventory[0] != null && this.inventory[0].getItem().itemID == Item.bucketEmpty.itemID)
-			this.inventory[0] = null;
-		if (this.inventory[1] != null && this.inventory[1].getItem().itemID == Item.bucketEmpty.itemID)
-			this.inventory[1] = null;
-		
 		if (canPress() && abc == 0)
 			abc = 1;
 		
