@@ -38,9 +38,9 @@ public class BlockHandScanner extends BlockContainer{
 
         @SideOnly(Side.CLIENT)
         public void registerIcons(IconRegister reg){
-                this.side = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "side");
-                this.bottom = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "side");
-                this.top = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "side");
+                this.side = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "sides");
+                this.bottom = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "top");
+                this.top = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "top");
                 this.front = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "front");
                 this.frontoff = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "frontoff");
         }
@@ -101,10 +101,13 @@ public class BlockHandScanner extends BlockContainer{
                                         par1World.notifyBlocksOfNeighborChange(x, y, z, this.blockID);
                                 }
                                 return true;
+                        }else if(!nbtname.equals(name)){
+                        	player.addChatMessage("Hand print not recognised");
                         }
                 }
                 else if(!par1World.isRemote && (!nbtname.equals(name))){
                         player.addChatMessage("Hand print not recognised");
+                        return true;
                 }
                 return true;
 
