@@ -20,11 +20,15 @@ public class MixerRecipies
 
 	public ItemStack getRecipeResult(int id1, int id2)
 	{
-		ArrayList<Integer> array = new ArrayList<Integer>();
-		array.add(id1);
-		array.add(id2);
+		ArrayList<Integer> array1 = new ArrayList<Integer>(), array2 = new ArrayList<Integer>();
 		
-		return (ItemStack) mixerList.get(array);
+		array1.add(id1);
+		array1.add(id2);
+		
+		array2.add(id2);
+		array2.add(id1);
+		
+		return mixerList.get(array1) == null ? mixerList.get(array2) : mixerList.get(array1);
 	}
 
 	public void addMixerRecipe(int id1, int id2, ItemStack itemStack, float experience)
@@ -44,7 +48,6 @@ public class MixerRecipies
 
 	private MixerRecipies()
 	{
-		addMixerRecipe(Item.appleRed.itemID, Item.bucketWater.itemID, new ItemStack(Item.bucketEmpty.itemID, 1, 0), 0.7F);
 		addMixerRecipe(Item.ingotGold.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemyellowBucket, 1, 0), 0.7F);
 	}
 }

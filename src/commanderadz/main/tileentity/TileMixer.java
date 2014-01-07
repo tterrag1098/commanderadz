@@ -234,6 +234,11 @@ public class TileMixer extends TileEntity implements IInventory
 
 	public void updateEntity()
 	{
+		if (this.inventory[0] != null && this.inventory[0].getItem().itemID == Item.bucketEmpty.itemID)
+			this.inventory[0] = null;
+		if (this.inventory[1] != null && this.inventory[1].getItem().itemID == Item.bucketEmpty.itemID)
+			this.inventory[1] = null;
+		
 		if (canPress() && abc == 0)
 			abc = 1;
 		
