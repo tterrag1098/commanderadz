@@ -50,6 +50,6 @@ public class WasherRecipies
 
 	private WasherRecipies()
 	{
-		addWasherRecipe(Item.ingotGold.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemyellowBucket, 1, 0), 0.7F);
+		addWasherRecipe(CommanderAdz.itemfluidFilter.itemID, CommanderAdz.itemwhitedirtDrink.itemID, new ItemStack(CommanderAdz.itemwhiteDrink, 1, 0), 0.7F);
 	}
 }

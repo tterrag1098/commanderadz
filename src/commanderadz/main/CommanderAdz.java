@@ -11,6 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import commanderadz.main.blocks.BlockBottler;
 import commanderadz.main.blocks.BlockCommanderAdz;
 import commanderadz.main.blocks.BlockHandScanner;
 import commanderadz.main.blocks.BlockMixer;
@@ -19,15 +20,24 @@ import commanderadz.main.fluid.BlockFluidLiquid;
 import commanderadz.main.handler.BucketHandler;
 import commanderadz.main.handler.GuiHandler;
 import commanderadz.main.handler.PacketHandler;
+import commanderadz.main.items.ItemFilter;
 import commanderadz.main.items.ItemGreenBucket;
+import commanderadz.main.items.ItemGreenDrink;
 import commanderadz.main.items.ItemPurpleBucket;
+import commanderadz.main.items.ItemPurpleDrink;
 import commanderadz.main.items.ItemPurplePowder;
 import commanderadz.main.items.ItemRedBucket;
+import commanderadz.main.items.ItemRedDrink;
 import commanderadz.main.items.ItemTurquoiseBucket;
+import commanderadz.main.items.ItemTurquoiseDrink;
 import commanderadz.main.items.ItemWhiteBucket;
+import commanderadz.main.items.ItemWhiteDrink;
+import commanderadz.main.items.ItemWhiteDrinkDirty;
 import commanderadz.main.items.ItemYellowBucket;
+import commanderadz.main.items.ItemYellowDrink;
 import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.HandScannerTile;
+import commanderadz.main.tileentity.TileBottler;
 import commanderadz.main.tileentity.TileMixer;
 import commanderadz.main.tileentity.TileWasher;
 import cpw.mods.fml.common.Mod;
@@ -52,6 +62,7 @@ public class CommanderAdz {
         int handScannerID;
         int liquidMixerID;
         int liquidWasherID;
+        int liquidBottlerID;
         
         int whiteBucketID;
         int greenBucketID;
@@ -60,7 +71,17 @@ public class CommanderAdz {
         int turquoiseBucketID;
         int yellowBucketID;
         
+        int whiteDrinkID;
+        int greenDrinkID;
+        int purpleDrinkID;
+        int redDrinkID;
+        int turquoiseDrinkID;
+        int yellowDrinkID;
+        
+        int whitedirtDrinkID;
+        
         int purplePowderID;
+        int fluidFilterID;
         
         int whiteFluidID;
         int greenFluidID;
@@ -73,6 +94,7 @@ public class CommanderAdz {
         public static Block blockhandScanner;
         public static Block blockliquidMixer;
         public static Block blockliquidWasher;
+        public static Block blockliquidBottler;
         
         public static Block blockwhiteFluid;
         public static Block blockgreenFluid;
@@ -88,7 +110,17 @@ public class CommanderAdz {
         public static Item itemturquoiseBucket;
         public static Item itemyellowBucket;
         
+        public static Item itemwhitedirtDrink;
+        
+        public static Item itemwhiteDrink;
+        public static Item itemgreenDrink;
+        public static Item itempurpleDrink;
+        public static Item itemredDrink;
+        public static Item itemturquoiseDrink;
+        public static Item itemyellowDrink;
+        
         public static Item itempurplePowder;
+        public static Item itemfluidFilter;
         
         public static Fluid fluidWhite;
         public static Fluid fluidGreen;
@@ -113,6 +145,7 @@ public class CommanderAdz {
           handScannerID = config.get("Block IDs", "Hand Scanner ID", 801).getInt();
           liquidMixerID = config.get("Block IDs", "Liquid Mixer ID", 802).getInt();
           liquidWasherID = config.get("Block IDs", "Liquid Washer ID", 803).getInt();
+          liquidBottlerID = config.get("Block IDs", "Liquid Bottler", 804).getInt();
           
           whiteFluidID = config.get("Fluid IDs", "White Fluid ID", 900).getInt();
           greenFluidID = config.get("Fluid IDs", "Green Fluid ID", 901).getInt();
@@ -128,7 +161,17 @@ public class CommanderAdz {
           turquoiseBucketID = config.get("Bucket IDs", "Turquoise Fluid Bucket ID", 1004).getInt();
           yellowBucketID = config.get("Bucket IDs", "Yellow Fluid Bucket ID", 1005).getInt();
           
+          whiteDrinkID = config.get("Drink IDs", "White Drink ID", 990).getInt();
+          greenDrinkID = config.get("Drink IDs", "Green Drink ID", 991).getInt();
+          purpleDrinkID = config.get("Drink IDs", "Purple Drink ID", 992).getInt();
+          redDrinkID = config.get("Drink IDs", "Red Drink ID", 993).getInt();
+          turquoiseDrinkID = config.get("Drink IDs", "Turquoise Drink ID", 994).getInt();
+          yellowDrinkID = config.get("Drink IDs", "Yellow Drink ID", 995).getInt();
+          
+          whitedirtDrinkID = config.get("Drink IDs", "White Dirt Drink", 996).getInt();
+          
           purplePowderID = config.get("Item IDs", "Purple Powder", 1010).getInt();
+          fluidFilterID = config.get("Item IDs", "Filter ID", 1011).getInt();
           
           fluidWhite = new Fluid("white").setBlockID(whiteFluidID);
           fluidGreen = new Fluid("green").setBlockID(greenFluidID);
@@ -185,8 +228,14 @@ public class CommanderAdz {
                 blockliquidWasher = new BlockWasher(liquidWasherID);
                 registerBlock(blockliquidWasher, "Liquid Washer", blockliquidWasher.getUnlocalizedName());
                 
+                blockliquidBottler = new BlockBottler(liquidBottlerID);
+                registerBlock(blockliquidBottler, "Bottler", blockliquidBottler.getUnlocalizedName());
+                
                 itempurplePowder = new ItemPurplePowder(purplePowderID);
                 registerItem(itempurplePowder, "Purple Powder", itempurplePowder.getUnlocalizedName());
+                
+                itemfluidFilter = new ItemFilter(fluidFilterID);
+                registerItem(itemfluidFilter, "Fluid Filter", itemfluidFilter.getUnlocalizedName());
                 
                 itemwhiteBucket = new ItemWhiteBucket(whiteBucketID, whiteFluidID);
                 registerItem(itemwhiteBucket, "White Bucket", itemwhiteBucket.getUnlocalizedName());
@@ -206,6 +255,28 @@ public class CommanderAdz {
                 itemyellowBucket = new ItemYellowBucket(yellowBucketID, yellowFluidID);
                 registerItem(itemyellowBucket, "Yellow Bucket", itemyellowBucket.getUnlocalizedName());
                 
+                //DRINKS
+                itemwhiteDrink = new ItemWhiteDrink(whiteDrinkID);
+                registerItem(itemwhiteDrink, "White Drink", itemwhiteDrink.getUnlocalizedName());
+               
+                itemgreenDrink = new ItemGreenDrink(greenDrinkID, 0, 0F, false);
+                registerItem(itemgreenDrink, "Green Drink", itemgreenDrink.getUnlocalizedName());
+                
+                itempurpleDrink = new ItemPurpleDrink(purpleDrinkID, 0, 0F, false);
+                registerItem(itempurpleDrink, "Purple Drink", itempurpleDrink.getUnlocalizedName());
+               
+                itemredDrink = new ItemRedDrink(redDrinkID, 0, 0F, false);
+                registerItem(itemredDrink, "Red Drink", itemredDrink.getUnlocalizedName());
+               
+                itemturquoiseDrink = new ItemTurquoiseDrink(turquoiseDrinkID, 0, 0F, false);
+                registerItem(itemturquoiseDrink, "Turquoise Drink", itemturquoiseDrink.getUnlocalizedName());
+               
+                itemyellowDrink = new ItemYellowDrink(yellowDrinkID, 0, 0F, false);
+                registerItem(itemyellowDrink, "Yellow Drink", itemyellowDrink.getUnlocalizedName());
+                
+                //DIRT DRINKS
+                itemwhitedirtDrink = new ItemWhiteDrinkDirty(whitedirtDrinkID);
+                registerItem(itemwhitedirtDrink, "White Drink", itemwhitedirtDrink.getUnlocalizedName());
                 
                 
                 FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("white", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(CommanderAdz.itemwhiteBucket), new ItemStack(Item.bucketEmpty));
@@ -217,7 +288,12 @@ public class CommanderAdz {
                 GameRegistry.registerTileEntity(HandScannerTile.class, "HandScannerTile");
                 GameRegistry.registerTileEntity(TileMixer.class, "TileMixer");
                 GameRegistry.registerTileEntity(TileWasher.class, "TileWasher");
+                GameRegistry.registerTileEntity(TileBottler.class, "TileBottler");
                 GameRegistry.addShapelessRecipe(new ItemStack(CommanderAdz.itempurplePowder, 1), new ItemStack(Item.dyePowder, 0, 5), new ItemStack(Item.sugar));
+                GameRegistry.addRecipe(new ItemStack(CommanderAdz.itemfluidFilter, 16),
+                		" s ", "sgs", " s ",
+                		's', Item.stick,
+                		'g', Block.thinGlass);
                 networkRegisters();
         }
         
