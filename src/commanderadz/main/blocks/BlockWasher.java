@@ -11,19 +11,18 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
 import commanderadz.main.CommanderAdz;
 import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.TileMixer;
-
+import commanderadz.main.tileentity.TileWasher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMixer extends BlockContainer{
+public class BlockWasher extends BlockContainer{
 
-        public BlockMixer(int id){
+        public BlockWasher(int id){
                 super(id, Material.rock);
-                setUnlocalizedName("liquidmixer");
+                setUnlocalizedName("washer");
                 setCreativeTab(CreativeTabs.tabBlock);
                 setHardness(3);
         }
@@ -60,13 +59,13 @@ public class BlockMixer extends BlockContainer{
         
         @Override
         public TileEntity createNewTileEntity(World world) {
-                return new TileMixer();
+                return new TileWasher();
         }
     public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
-            TileMixer tEntity = (TileMixer)par1World.getBlockTileEntity(x,y,z);
+            TileWasher tEntity = (TileWasher)par1World.getBlockTileEntity(x,y,z);
          if(tEntity != null){
-                 player.openGui(CommanderAdz.instance, 0, par1World, x, y, z);
+                 player.openGui(CommanderAdz.instance, 1, par1World, x, y, z);
  //        }
          return true;
  }

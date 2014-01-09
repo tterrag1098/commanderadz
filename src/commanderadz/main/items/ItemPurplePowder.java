@@ -12,7 +12,7 @@ import net.minecraft.item.ItemBucket;
 public class ItemPurplePowder extends Item {
     public ItemPurplePowder(int id){
         super(id);
-        setUnlocalizedName("itempurplepowder");
+        setUnlocalizedName("xxxxpdust");
         setCreativeTab(CreativeTabs.tabBlock);
 }
 
