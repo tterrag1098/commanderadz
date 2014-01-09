@@ -1,8 +1,10 @@
-package commanderadz.main;
+package commanderadz.main.recipes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import commanderadz.main.CommanderAdz;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

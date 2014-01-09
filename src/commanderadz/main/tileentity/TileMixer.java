@@ -1,7 +1,6 @@
 package commanderadz.main.tileentity;
 
-import commanderadz.main.MixerRecipies;
-
+import commanderadz.main.recipes.MixerRecipies;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
