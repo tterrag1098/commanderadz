@@ -51,5 +51,10 @@ public class WasherRecipies
 	private WasherRecipies()
 	{
 		addWasherRecipe(CommanderAdz.itemfluidFilter.itemID, CommanderAdz.itemwhitedirtDrink.itemID, new ItemStack(CommanderAdz.itemwhiteDrink, 1, 0), 0.7F);
+		addWasherRecipe(CommanderAdz.itemfluidFilter.itemID, CommanderAdz.itemgreendirtDrink.itemID, new ItemStack(CommanderAdz.itemgreenDrink, 1, 0), 0.7F);
+		addWasherRecipe(CommanderAdz.itemfluidFilter.itemID, CommanderAdz.itemreddirtDrink.itemID, new ItemStack(CommanderAdz.itemredDrink, 1, 0), 0.7F);
+		addWasherRecipe(CommanderAdz.itemfluidFilter.itemID, CommanderAdz.itempurpledirtDrink.itemID, new ItemStack(CommanderAdz.itempurpleDrink, 1, 0), 0.7F);
+		addWasherRecipe(CommanderAdz.itemfluidFilter.itemID, CommanderAdz.itemturquoisedirtDrink.itemID, new ItemStack(CommanderAdz.itemturquoiseDrink, 1, 0), 0.7F);
+		addWasherRecipe(CommanderAdz.itemfluidFilter.itemID, CommanderAdz.itemyellowdirtDrink.itemID, new ItemStack(CommanderAdz.itemyellowDrink, 1, 0), 0.7F);
 	}
 }
