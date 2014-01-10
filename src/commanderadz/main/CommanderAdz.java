@@ -24,18 +24,23 @@ import commanderadz.main.handler.PacketHandler;
 import commanderadz.main.items.ItemFilter;
 import commanderadz.main.items.ItemGreenBucket;
 import commanderadz.main.items.ItemGreenDrink;
+import commanderadz.main.items.ItemGreenDrinkDirty;
 import commanderadz.main.items.ItemPurpleBucket;
 import commanderadz.main.items.ItemPurpleDrink;
+import commanderadz.main.items.ItemPurpleDrinkDirty;
 import commanderadz.main.items.ItemPurplePowder;
 import commanderadz.main.items.ItemRedBucket;
 import commanderadz.main.items.ItemRedDrink;
+import commanderadz.main.items.ItemRedDrinkDirty;
 import commanderadz.main.items.ItemTurquoiseBucket;
 import commanderadz.main.items.ItemTurquoiseDrink;
+import commanderadz.main.items.ItemTurquoiseDrinkDirty;
 import commanderadz.main.items.ItemWhiteBucket;
 import commanderadz.main.items.ItemWhiteDrink;
 import commanderadz.main.items.ItemWhiteDrinkDirty;
 import commanderadz.main.items.ItemYellowBucket;
 import commanderadz.main.items.ItemYellowDrink;
+import commanderadz.main.items.ItemYellowDrinkDirty;
 import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.HandScannerTile;
 import commanderadz.main.tileentity.TileBottler;
@@ -80,6 +85,11 @@ public class CommanderAdz {
         int yellowDrinkID;
         
         int whitedirtDrinkID;
+        int greendirtDrinkID;
+        int purpledirtDrinkID;
+        int reddirtDrinkID;
+        int turquoisedirtDrinkID;
+        int yellowdirtDrinkID;
         
         int purplePowderID;
         int fluidFilterID;
@@ -112,6 +122,11 @@ public class CommanderAdz {
         public static Item itemyellowBucket;
         
         public static Item itemwhitedirtDrink;
+        public static Item itemgreendirtDrink;
+        public static Item itempurpledirtDrink;
+        public static Item itemreddirtDrink;
+        public static Item itemturquoisedirtDrink;
+        public static Item itemyellowdirtDrink;
         
         public static Item itemwhiteDrink;
         public static Item itemgreenDrink;
@@ -169,7 +184,12 @@ public class CommanderAdz {
           turquoiseDrinkID = config.get("Drink IDs", "Turquoise Drink ID", 994).getInt();
           yellowDrinkID = config.get("Drink IDs", "Yellow Drink ID", 995).getInt();
           
-          whitedirtDrinkID = config.get("Drink IDs", "White Dirt Drink", 996).getInt();
+          whitedirtDrinkID = config.get("Drink IDs", "White Dirt Drink", 910).getInt();
+          greendirtDrinkID = config.get("Drink IDs", "Green Dirt Drink ID", 911).getInt();
+          purpledirtDrinkID = config.get("Drink IDs", "Purple Dirt Drink ID", 912).getInt();
+          reddirtDrinkID = config.get("Drink IDs", "Red Dirt Drink ID", 913).getInt();
+          turquoisedirtDrinkID = config.get("Drink IDs", "Turquoise Dirt Drink ID", 914).getInt();
+          yellowdirtDrinkID = config.get("Drink IDs", "Yellow Dirt Drink ID", 915).getInt();
           
           purplePowderID = config.get("Item IDs", "Purple Powder", 1010).getInt();
           fluidFilterID = config.get("Item IDs", "Filter ID", 1011).getInt();
@@ -226,24 +246,39 @@ public class CommanderAdz {
                 itemwhiteDrink = new ItemWhiteDrink(whiteDrinkID);
                 registerItem(itemwhiteDrink, "White Drink", itemwhiteDrink.getUnlocalizedName());
                
-                itemgreenDrink = new ItemGreenDrink(greenDrinkID, 0, 0F, false);
+                itemgreenDrink = new ItemGreenDrink(greenDrinkID);
                 registerItem(itemgreenDrink, "Green Drink", itemgreenDrink.getUnlocalizedName());
                 
-                itempurpleDrink = new ItemPurpleDrink(purpleDrinkID, 0, 0F, false);
+                itempurpleDrink = new ItemPurpleDrink(purpleDrinkID);
                 registerItem(itempurpleDrink, "Purple Drink", itempurpleDrink.getUnlocalizedName());
                
-                itemredDrink = new ItemRedDrink(redDrinkID, 0, 0F, false);
+                itemredDrink = new ItemRedDrink(redDrinkID);
                 registerItem(itemredDrink, "Red Drink", itemredDrink.getUnlocalizedName());
                
-                itemturquoiseDrink = new ItemTurquoiseDrink(turquoiseDrinkID, 0, 0F, false);
+                itemturquoiseDrink = new ItemTurquoiseDrink(turquoiseDrinkID);
                 registerItem(itemturquoiseDrink, "Turquoise Drink", itemturquoiseDrink.getUnlocalizedName());
                
-                itemyellowDrink = new ItemYellowDrink(yellowDrinkID, 0, 0F, false);
+                itemyellowDrink = new ItemYellowDrink(yellowDrinkID);
                 registerItem(itemyellowDrink, "Yellow Drink", itemyellowDrink.getUnlocalizedName());
                 
                 //DIRT DRINKS
                 itemwhitedirtDrink = new ItemWhiteDrinkDirty(whitedirtDrinkID);
                 registerItem(itemwhitedirtDrink, "White Drink", itemwhitedirtDrink.getUnlocalizedName());
+                
+                itemgreendirtDrink = new ItemGreenDrinkDirty(greendirtDrinkID);
+                registerItem(itemgreendirtDrink, "Green Drink", itemgreendirtDrink.getUnlocalizedName());
+                
+                itempurpledirtDrink = new ItemPurpleDrinkDirty(purpledirtDrinkID);
+                registerItem(itempurpledirtDrink, "Purple Drink", itempurpledirtDrink.getUnlocalizedName());
+                
+                itemreddirtDrink = new ItemRedDrinkDirty(reddirtDrinkID);
+                registerItem(itemreddirtDrink, "Red Drink", itemreddirtDrink.getUnlocalizedName());
+                
+                itemturquoisedirtDrink = new ItemTurquoiseDrinkDirty(turquoisedirtDrinkID);
+                registerItem(itemturquoisedirtDrink, "Turquoise Drink", itemturquoisedirtDrink.getUnlocalizedName());
+                
+                itemyellowdirtDrink = new ItemYellowDrinkDirty(yellowdirtDrinkID);
+                registerItem(itemyellowdirtDrink, "Yellow Drink", itemyellowdirtDrink.getUnlocalizedName());
                 
                 
                
