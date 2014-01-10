@@ -56,7 +56,7 @@ public class ItemWhiteDrink extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List dataList, boolean bool){
-		dataList.add("\u00a7bDirty - Nice and Clean");
+		dataList.add("\u00a7bNice and Clean");
 	}
 	
 @Override

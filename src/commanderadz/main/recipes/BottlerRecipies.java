@@ -50,6 +50,6 @@ public class BottlerRecipies
 
 	private BottlerRecipies()
 	{
-		addBottlerRecipe(Item.glassBottle.itemID, CommanderAdz.itemwhiteBucket.itemID, new ItemStack(CommanderAdz.itemwhiteDrink, 1, 0), 0.7F);
+		addBottlerRecipe(Item.glassBottle.itemID, CommanderAdz.itemwhiteBucket.itemID, new ItemStack(CommanderAdz.itemwhitedirtDrink, 1, 0), 0.7F);
 	}
 }
