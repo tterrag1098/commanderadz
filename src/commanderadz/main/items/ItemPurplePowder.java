@@ -12,13 +12,13 @@ import net.minecraft.item.ItemBucket;
 public class ItemPurplePowder extends Item {
     public ItemPurplePowder(int id){
         super(id);
-        setUnlocalizedName("xxxxpdust");
+        setUnlocalizedName("purpledust");
         setCreativeTab(CreativeTabs.tabBlock);
 }
 
 @Override
 @SideOnly(Side.CLIENT)
 public void registerIcons(IconRegister reg){
-        this.itemIcon = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 5));
+        this.itemIcon = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
 }
 }

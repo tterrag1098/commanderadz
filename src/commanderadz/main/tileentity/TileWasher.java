@@ -1,5 +1,6 @@
 package commanderadz.main.tileentity;
 
+import commanderadz.main.CommanderAdz;
 import commanderadz.main.recipes.MixerRecipies;
 import commanderadz.main.recipes.WasherRecipies;
 import net.minecraft.entity.player.EntityPlayer;
@@ -189,6 +190,8 @@ public class TileWasher extends TileEntity implements IInventory
 				Item var2 = this.inventory[0].getItem().getContainerItem();
 				this.inventory[0] = var2 == null ? null : new ItemStack(var2);
 			}
+			
+			
 			if (this.inventory[1].stackSize == 0)
 			{
 				Item var2 = this.inventory[1].getItem().getContainerItem();

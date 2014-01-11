@@ -16,6 +16,7 @@ import commanderadz.main.blocks.BlockBottler;
 import commanderadz.main.blocks.BlockCommanderAdz;
 import commanderadz.main.blocks.BlockHandScanner;
 import commanderadz.main.blocks.BlockMixer;
+import commanderadz.main.blocks.BlockScorp;
 import commanderadz.main.blocks.BlockWasher;
 import commanderadz.main.fluid.BlockFluidLiquid;
 import commanderadz.main.handler.BucketHandler;
@@ -68,6 +69,7 @@ public class CommanderAdz {
         private GuiHandler guiHandler = new GuiHandler();
         
         int commanderAdzID;
+        int scorpBlockID;
         int handScannerID;
         int liquidMixerID;
         int liquidWasherID;
@@ -112,6 +114,7 @@ public class CommanderAdz {
         int yellowFluidID;
         
         public static Block blockcommanderAdz;
+        public static Block blockscorpBlock;
         public static Block blockhandScanner;
         public static Block blockliquidMixer;
         public static Block blockliquidWasher;
@@ -174,6 +177,7 @@ public class CommanderAdz {
           Configuration config = new Configuration(event.getSuggestedConfigurationFile());
           config.load();
           
+          scorpBlockID = config.get("Block IDs", "Scorp Block ID", 799).getInt();
           commanderAdzID = config.get("Block IDs", "CommanderAdz ID", 800).getInt();
           handScannerID = config.get("Block IDs", "Hand Scanner ID", 801).getInt();
           liquidMixerID = config.get("Block IDs", "Liquid Mixer ID", 802).getInt();
@@ -226,6 +230,8 @@ public class CommanderAdz {
         @EventHandler
         public void load(FMLInitializationEvent event){
                 
+                blockscorpBlock = new BlockScorp(scorpBlockID);
+                registerBlock(blockscorpBlock, "Scorp Block", blockscorpBlock.getUnlocalizedName());
                 
                 blockcommanderAdz = new BlockCommanderAdz(commanderAdzID);
                 registerBlock(blockcommanderAdz,"Commander Adz Block", blockcommanderAdz.getUnlocalizedName());
