@@ -25,6 +25,7 @@ import commanderadz.main.items.ItemFilter;
 import commanderadz.main.items.ItemGreenBucket;
 import commanderadz.main.items.ItemGreenDrink;
 import commanderadz.main.items.ItemGreenDrinkDirty;
+import commanderadz.main.items.ItemGreenRod;
 import commanderadz.main.items.ItemPurpleBucket;
 import commanderadz.main.items.ItemPurpleDrink;
 import commanderadz.main.items.ItemPurpleDrinkDirty;
@@ -32,12 +33,14 @@ import commanderadz.main.items.ItemPurplePowder;
 import commanderadz.main.items.ItemRedBucket;
 import commanderadz.main.items.ItemRedDrink;
 import commanderadz.main.items.ItemRedDrinkDirty;
+import commanderadz.main.items.ItemRedRod;
 import commanderadz.main.items.ItemTurquoiseBucket;
 import commanderadz.main.items.ItemTurquoiseDrink;
 import commanderadz.main.items.ItemTurquoiseDrinkDirty;
 import commanderadz.main.items.ItemWhiteBucket;
 import commanderadz.main.items.ItemWhiteDrink;
 import commanderadz.main.items.ItemWhiteDrinkDirty;
+import commanderadz.main.items.ItemWhiteRod;
 import commanderadz.main.items.ItemYellowBucket;
 import commanderadz.main.items.ItemYellowDrink;
 import commanderadz.main.items.ItemYellowDrinkDirty;
@@ -91,6 +94,13 @@ public class CommanderAdz {
         int turquoisedirtDrinkID;
         int yellowdirtDrinkID;
         
+        int whiteRodID;
+        int greenRodID;
+        int purpleRodID;
+        int redRodID;
+        int turquoiseRodID;
+        int yellowRodID;
+        
         int purplePowderID;
         int fluidFilterID;
         
@@ -135,6 +145,13 @@ public class CommanderAdz {
         public static Item itemturquoiseDrink;
         public static Item itemyellowDrink;
         
+        public static Item itemwhiteRod;
+        public static Item itemgreenRod;
+        public static Item itempurpleRod;
+        public static Item itemredRod;
+        public static Item itemturquoiseRod;
+        public static Item itemyellowRod;
+        
         public static Item itempurplePowder;
         public static Item itemfluidFilter;
         
@@ -169,6 +186,13 @@ public class CommanderAdz {
           redFluidID = config.get("Fluid IDs", "Red Fluid ID", 903).getInt();
           turquoiseFluidID = config.get("Fluid IDs", "Turquoise Fluid ID", 904).getInt();
           yellowFluidID = config.get("Fluid IDs", "Yellow Fluid ID", 905).getInt();
+          
+          whiteRodID = config.get("Item IDs", "White Rod", 951).getInt();
+          greenRodID = config.get("Item IDs", "Green Rod", 952).getInt();
+          purpleRodID = config.get("Item IDs", "Purple Rod", 953).getInt();
+          redRodID = config.get("Item IDs", "Red Rod", 954).getInt();
+          turquoiseRodID = config.get("Item IDs", "Turquoise Rod", 955).getInt();
+          yellowRodID = config.get("Item IDs", "Yellow Rod", 956).getInt();
           
           whiteBucketID = config.get("Bucket IDs", "White Fluid Bucket ID", 1000).getInt();
           greenBucketID = config.get("Bucket IDs", "Green Fluid Bucket ID", 1001).getInt();
@@ -280,6 +304,16 @@ public class CommanderAdz {
                 itemyellowdirtDrink = new ItemYellowDrinkDirty(yellowdirtDrinkID);
                 registerItem(itemyellowdirtDrink, "Yellow Drink", itemyellowdirtDrink.getUnlocalizedName());
                 
+                //Rods
+                
+                itemwhiteRod = new ItemWhiteRod(whiteRodID);
+                registerItem(itemwhiteRod, "White Rod", itemwhiteRod.getUnlocalizedName());
+                
+                itemgreenRod = new ItemGreenRod(greenRodID);
+                registerItem(itemgreenRod, "Green Rod", itemgreenRod.getUnlocalizedName());
+                
+                itemredRod = new ItemRedRod(redRodID);
+                registerItem(itemredRod, "Red Rod", itemredRod.getUnlocalizedName());
                 
                
                 GameRegistry.registerTileEntity(HandScannerTile.class, "HandScannerTile");
