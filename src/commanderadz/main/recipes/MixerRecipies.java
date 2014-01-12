@@ -1,8 +1,10 @@
-package commanderadz.main;
+package commanderadz.main.recipes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import commanderadz.main.CommanderAdz;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -49,5 +51,10 @@ public class MixerRecipies
 	private MixerRecipies()
 	{
 		addMixerRecipe(Item.ingotGold.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemyellowBucket, 1, 0), 0.7F);
+		addMixerRecipe(Item.redstone.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemredBucket, 1, 0), 0.7F);
+		addMixerRecipe(Item.emerald.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemgreenBucket, 1, 0), 0.7F);
+		addMixerRecipe(Item.sugar.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemwhiteBucket, 1, 0), 0.7F);
+		addMixerRecipe(Item.diamond.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itemturquoiseBucket, 1, 0), 0.7F);
+		addMixerRecipe(CommanderAdz.itempurplePowder.itemID, Item.bucketWater.itemID, new ItemStack(CommanderAdz.itempurpleBucket, 1, 0), 0.7F);
 	}
 }

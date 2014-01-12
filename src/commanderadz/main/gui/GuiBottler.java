@@ -7,15 +7,19 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
+import commanderadz.main.container.ContainerBottler;
 import commanderadz.main.container.ContainerMixer;
+import commanderadz.main.container.ContainerWasher;
 import commanderadz.main.registry.DefaultProps;
+import commanderadz.main.tileentity.TileBottler;
 import commanderadz.main.tileentity.TileMixer;
+import commanderadz.main.tileentity.TileWasher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class GuiMixer extends GuiContainer
+public class GuiBottler extends GuiContainer
 {
-	private TileMixer mixerTile;
+	private TileBottler bottlerTile;
 	public int var9 = 0;
 	World world;
 	int xx;
@@ -27,16 +31,16 @@ public class GuiMixer extends GuiContainer
 	int zz;
 	int progress;
 
-	public GuiMixer(InventoryPlayer inventory, TileMixer tile)
+	public GuiBottler(InventoryPlayer inventory, TileBottler tile)
 	{
-		super(new ContainerMixer(tile, inventory));
-		mixerTile = tile;
+		super(new ContainerBottler(tile, inventory));
+		bottlerTile = tile;
 	}
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 4210752);
-		this.fontRenderer.drawString("Liquid Mixer", 66, 6, 4210752);
+		this.fontRenderer.drawString("Bottler", 66, 6, 4210752);
 	}
 
 	/**
@@ -56,12 +60,12 @@ public class GuiMixer extends GuiContainer
 
 		this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
 		int var7 = 0;
-		if (this.mixerTile.canPress())
+		if (this.bottlerTile.canPress())
 		{
-			System.out.println(this.mixerTile.abc);
+			System.out.println(this.bottlerTile.abc);
 			x = (this.width - this.xSize) / 2 + 61;
 			y = (this.height - this.ySize) / 2 + 19;
-			progress = (int) (0.59 * this.mixerTile.abc);
+			progress = (int) (0.59 * this.bottlerTile.abc);
 			this.drawTexturedModalRect(this.x, this.y, 177, 2, this.progress, 46);
 		}
 	}

@@ -6,13 +6,14 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import commanderadz.main.tileentity.TileBottler;
 import commanderadz.main.tileentity.TileMixer;
 
-public class ContainerMixer extends Container
+public class ContainerBottler extends Container
 {
-	private class SlotMixer extends Slot
+	private class SlotBottler extends Slot
 	{
-		public SlotMixer(IInventory par1iInventory, int par2, int par3, int par4)
+		public SlotBottler(IInventory par1iInventory, int par2, int par3, int par4)
 		{
 			super(par1iInventory, par2, par3, par4);
 		}
@@ -24,15 +25,15 @@ public class ContainerMixer extends Container
 		}
 	}
 	
-	protected TileMixer tile_entity;
+	protected TileBottler tile_entity;
 
-	public ContainerMixer(TileMixer tile_entity, InventoryPlayer player_inventory)
+	public ContainerBottler(TileBottler tile_entity, InventoryPlayer player_inventory)
 	{
 		this.tile_entity = tile_entity;
 
 		addSlotToContainer(new Slot(tile_entity, 0, 44, 15));
 		addSlotToContainer(new Slot(tile_entity, 1, 44, 55));
-		addSlotToContainer(new SlotMixer(tile_entity, 2, 130, 35));
+		addSlotToContainer(new SlotBottler(tile_entity, 2, 130, 35));
 
 		bindPlayerInventory(player_inventory);
 	}

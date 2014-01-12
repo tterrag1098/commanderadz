@@ -1,5 +1,6 @@
 package commanderadz.main.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -11,19 +12,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
 import commanderadz.main.CommanderAdz;
 import commanderadz.main.registry.Reference;
 import commanderadz.main.tileentity.TileMixer;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMixer extends BlockContainer{
+public class BlockScorp extends Block{
 
-        public BlockMixer(int id){
+        public BlockScorp(int id){
                 super(id, Material.rock);
-                setUnlocalizedName("liquidmixer");
+                setUnlocalizedName("scorp");
                 setCreativeTab(CreativeTabs.tabBlock);
                 setHardness(3);
         }
@@ -32,8 +31,8 @@ public class BlockMixer extends BlockContainer{
         
         @SideOnly(Side.CLIENT)
         public void registerIcons(IconRegister reg){
-                this.side = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "side");
-                this.bottom = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "top");
+                this.side = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "front");
+                this.bottom = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "bottom");
                 this.top = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "top");
                 this.front = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "front");
         }
@@ -57,20 +56,4 @@ public class BlockMixer extends BlockContainer{
         int whichDirectionFacing = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
         par1World.setBlockMetadataWithNotify(x, y, z, whichDirectionFacing, 2);
     }
-        
-        @Override
-        public TileEntity createNewTileEntity(World world) {
-                return new TileMixer();
-        }
-    public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
-    {
-            TileMixer tEntity = (TileMixer)par1World.getBlockTileEntity(x,y,z);
-         if(tEntity != null){
-                 player.openGui(CommanderAdz.instance, 0, par1World, x, y, z);
- //        }
-         return true;
- }
-         return false;
-    }
-    
 }

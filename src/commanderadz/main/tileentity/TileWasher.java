@@ -1,6 +1,8 @@
 package commanderadz.main.tileentity;
 
+import commanderadz.main.CommanderAdz;
 import commanderadz.main.recipes.MixerRecipies;
+import commanderadz.main.recipes.WasherRecipies;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -9,13 +11,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileMixer extends TileEntity implements IInventory
+public class TileWasher extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory;
 	public int pressTime = 0;
 	public int abc = 1;
 
-	public TileMixer()
+	public TileWasher()
 	{
 		this.inventory = new ItemStack[3];
 	}
@@ -169,7 +171,7 @@ public class TileMixer extends TileEntity implements IInventory
 	{
 		if (this.inventory[0] != null && this.inventory[1] != null)
 		{
-			ItemStack var1 = MixerRecipies.instance().getRecipeResult(this.inventory[0].getItem().itemID, this.inventory[1].getItem().itemID);
+			ItemStack var1 = WasherRecipies.instance().getRecipeResult(this.inventory[0].getItem().itemID, this.inventory[1].getItem().itemID);
 			if (this.inventory[2] == null)
 			{
 				this.inventory[2] = var1.copy();
@@ -188,6 +190,8 @@ public class TileMixer extends TileEntity implements IInventory
 				Item var2 = this.inventory[0].getItem().getContainerItem();
 				this.inventory[0] = var2 == null ? null : new ItemStack(var2);
 			}
+			
+			
 			if (this.inventory[1].stackSize == 0)
 			{
 				Item var2 = this.inventory[1].getItem().getContainerItem();
@@ -205,7 +209,7 @@ public class TileMixer extends TileEntity implements IInventory
 			return false;
 		}
 
-		ItemStack itemstack = MixerRecipies.instance().getRecipeResult(inventory[0].getItem().itemID, inventory[1].getItem().itemID);
+		ItemStack itemstack = WasherRecipies.instance().getRecipeResult(inventory[0].getItem().itemID, inventory[1].getItem().itemID);
 
 		if (itemstack == null)
 		{
