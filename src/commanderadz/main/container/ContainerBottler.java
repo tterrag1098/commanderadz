@@ -7,7 +7,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import commanderadz.main.tileentity.TileBottler;
-import commanderadz.main.tileentity.TileMixer;
 
 public class ContainerBottler extends Container
 {
@@ -63,6 +62,7 @@ public class ContainerBottler extends Container
 		return tile_entity.isUseableByPlayer(entityplayer);
 	}
 
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot)
 	{
 		ItemStack itemstack1 = null;

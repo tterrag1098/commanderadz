@@ -36,7 +36,8 @@ public class BlockHandScanner extends BlockContainer{
         @SideOnly(Side.CLIENT)
         private Icon side, bottom, top, front, frontoff;
 
-        @SideOnly(Side.CLIENT)
+        @Override
+		@SideOnly(Side.CLIENT)
         public void registerIcons(IconRegister reg){
                 this.side = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "sides");
                 this.bottom = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "top");
@@ -60,7 +61,7 @@ public class BlockHandScanner extends BlockContainer{
         @Override
         public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack par6ItemStack) {
                 
-                int whichDirectionFacing = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+                int whichDirectionFacing = MathHelper.floor_double(entity.rotationYaw * 4.0F / 360.0F + 2.5D) & 3;
                 
                 world.setBlockMetadataWithNotify(x, y, z, whichDirectionFacing, 2);
                 
@@ -79,7 +80,8 @@ public class BlockHandScanner extends BlockContainer{
                 }
         }
 
-        public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+        @Override
+		public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
         {
                 HandScannerTile tileEntity = (HandScannerTile) par1World.getBlockTileEntity(x, y, z);
                 par1World.notifyBlocksOfNeighborChange(x, y, z, this.blockID);
@@ -119,12 +121,14 @@ public class BlockHandScanner extends BlockContainer{
                 return tile;
         }
 
-        public boolean canProvidePower()
+        @Override
+		public boolean canProvidePower()
         {
                 return true;
         }
 
-        public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+        @Override
+		public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
         {
                 return power;
         }

@@ -45,7 +45,7 @@ public class MixerRecipies
 
 	public float getExperience(int par1)
 	{
-		return this.mixerExperience.containsKey(Integer.valueOf(par1)) ? ((Float) this.mixerExperience.get(Integer.valueOf(par1))).floatValue() : 0.0F;
+		return this.mixerExperience.containsKey(Integer.valueOf(par1)) ? this.mixerExperience.get(Integer.valueOf(par1)).floatValue() : 0.0F;
 	}
 
 	private MixerRecipies()

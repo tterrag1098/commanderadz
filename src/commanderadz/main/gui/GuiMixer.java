@@ -33,6 +33,7 @@ public class GuiMixer extends GuiContainer
 		mixerTile = tile;
 	}
 
+	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 4210752);
@@ -43,6 +44,7 @@ public class GuiMixer extends GuiContainer
 	 * Draw the background layer for the GuiContainer (everything behind the
 	 * items)
 	 */
+	@Override
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings("unused")
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)

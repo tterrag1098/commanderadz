@@ -13,7 +13,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import commanderadz.main.CommanderAdz;
 import commanderadz.main.registry.Reference;
-import commanderadz.main.tileentity.TileMixer;
 import commanderadz.main.tileentity.TileWasher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,7 +28,8 @@ public class BlockWasher extends BlockContainer{
         @SideOnly(Side.CLIENT)
         private Icon side, bottom, top, front;
         
-        @SideOnly(Side.CLIENT)
+        @Override
+		@SideOnly(Side.CLIENT)
         public void registerIcons(IconRegister reg){
                 this.side = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "side");
                 this.bottom = reg.registerIcon(Reference.MOD_TEXTUREPATH + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "top");
@@ -51,9 +51,10 @@ public class BlockWasher extends BlockContainer{
                 
         }
         
-        public void onBlockPlacedBy(World par1World, int x, int y, int z, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
+        @Override
+		public void onBlockPlacedBy(World par1World, int x, int y, int z, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
     {
-        int whichDirectionFacing = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+        int whichDirectionFacing = MathHelper.floor_double(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F + 2.5D) & 3;
         par1World.setBlockMetadataWithNotify(x, y, z, whichDirectionFacing, 2);
     }
         
@@ -61,7 +62,8 @@ public class BlockWasher extends BlockContainer{
         public TileEntity createNewTileEntity(World world) {
                 return new TileWasher();
         }
-    public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    @Override
+	public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
             TileWasher tEntity = (TileWasher)par1World.getBlockTileEntity(x,y,z);
          if(tEntity != null){

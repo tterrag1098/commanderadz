@@ -45,7 +45,7 @@ public class BottlerRecipies
 
 	public float getExperience(int par1)
 	{
-		return this.bottlerExperience.containsKey(Integer.valueOf(par1)) ? ((Float) this.bottlerExperience.get(Integer.valueOf(par1))).floatValue() : 0.0F;
+		return this.bottlerExperience.containsKey(Integer.valueOf(par1)) ? this.bottlerExperience.get(Integer.valueOf(par1)).floatValue() : 0.0F;
 	}
 
 	private BottlerRecipies()

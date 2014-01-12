@@ -233,6 +233,7 @@ public class TileMixer extends TileEntity implements IInventory
 		return inventory[2].stackSize < itemstack.getMaxStackSize();
 	}
 
+	@Override
 	public void updateEntity()
 	{
 		if (canPress() && abc == 0)

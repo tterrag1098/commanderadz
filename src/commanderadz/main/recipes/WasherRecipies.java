@@ -6,7 +6,6 @@ import java.util.Map;
 
 import commanderadz.main.CommanderAdz;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class WasherRecipies
@@ -45,7 +44,7 @@ public class WasherRecipies
 
 	public float getExperience(int par1)
 	{
-		return this.washerExperience.containsKey(Integer.valueOf(par1)) ? ((Float) this.washerExperience.get(Integer.valueOf(par1))).floatValue() : 0.0F;
+		return this.washerExperience.containsKey(Integer.valueOf(par1)) ? this.washerExperience.get(Integer.valueOf(par1)).floatValue() : 0.0F;
 	}
 
 	private WasherRecipies()

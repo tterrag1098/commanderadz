@@ -62,6 +62,7 @@ public class ContainerMixer extends Container
 		return tile_entity.isUseableByPlayer(entityplayer);
 	}
 
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot)
 	{
 		ItemStack itemstack1 = null;

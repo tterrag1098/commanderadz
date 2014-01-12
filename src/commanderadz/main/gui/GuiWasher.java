@@ -7,10 +7,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import commanderadz.main.container.ContainerMixer;
 import commanderadz.main.container.ContainerWasher;
 import commanderadz.main.registry.DefaultProps;
-import commanderadz.main.tileentity.TileMixer;
 import commanderadz.main.tileentity.TileWasher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -35,6 +33,7 @@ public class GuiWasher extends GuiContainer
 		washerTile = tile;
 	}
 
+	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 4210752);
@@ -45,6 +44,7 @@ public class GuiWasher extends GuiContainer
 	 * Draw the background layer for the GuiContainer (everything behind the
 	 * items)
 	 */
+	@Override
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings("unused")
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
