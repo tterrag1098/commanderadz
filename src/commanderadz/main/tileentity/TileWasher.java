@@ -183,8 +183,11 @@ public class TileWasher extends TileEntity implements IInventory
 			}
 			this.inventory[0].getItem().setContainerItem(null);
 			this.inventory[1].getItem().setContainerItem(null);
-			this.inventory[0].stackSize--;
-			this.inventory[1].stackSize--;
+			this.inventory[getFilterSlot()].setItemDamage(inventory[getFilterSlot()].getItemDamage() + 1);
+			this.inventory[getNotFilterSlot()].stackSize--;
+			if (inventory[getFilterSlot()].getItemDamage() >= 10)
+				inventory[getFilterSlot()].stackSize--;
+			
 			if (this.inventory[0].stackSize == 0)
 			{
 				Item var2 = this.inventory[0].getItem().getContainerItem();
@@ -261,6 +264,16 @@ public class TileWasher extends TileEntity implements IInventory
 	public int getCookProgressScaled(int par1)
 	{
 		return this.abc * par1 / 50;
+	}
+	
+	public int getFilterSlot()
+	{
+		return inventory[0].getItem() == CommanderAdz.itemfluidFilter ? 0 : 1;
+	}
+	
+	public int getNotFilterSlot()
+	{
+		return getFilterSlot() == 0 ? 1 : 0;
 	}
 
 }

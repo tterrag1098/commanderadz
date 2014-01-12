@@ -16,7 +16,7 @@ public class ItemFilter extends Item {
         setUnlocalizedName("filter");
         setCreativeTab(CreativeTabs.tabBlock);
         maxStackSize = 1;
-        this.setMaxDamage(64);
+        this.setMaxDamage(10);
     }
     
 @Override
